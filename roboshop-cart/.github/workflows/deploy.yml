@@ -1,0 +1,26 @@
+name: Cart Deployment
+run-name: Cart Deployment
+on: [push]
+jobs:
+  DEV:
+    runs-on: self-hosted
+    steps:
+      - run: echo DEV
+
+  QA:
+    runs-on: self-hosted
+    needs: DEV
+    steps:
+      - run: echo QA
+
+  UAT:
+    runs-on: self-hosted
+    needs: QA
+    steps:
+      - run: echo UAT
+
+  PROD:
+    runs-on: self-hosted
+    needs: UAT
+    steps:
+      - run: echo PROD
